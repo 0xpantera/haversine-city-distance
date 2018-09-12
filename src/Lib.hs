@@ -36,7 +36,15 @@ haversine coords1 coords2 = earthRadius * c
     earthRadius = 3961.0
 
 
+haversineMaybe :: Maybe LatLong -> Maybe LatLong -> Maybe Double
+haversineMaybe (Just val1) (Just val2) = Just (haversine val1 val2)
+haversineMaybe _ _ = Nothing
+
+
+
 printDistance :: Maybe Double -> IO ()
 printDistance Nothing = putStrLn "Error, invalid city entered"
 printDistance (Just distance) = putStrLn (show distance ++ " miles")
+
+
 
