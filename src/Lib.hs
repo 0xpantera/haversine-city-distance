@@ -1,12 +1,10 @@
 module Lib
-    ( someFunc
+    ( locationDB
+    , haversine
     ) where
 
 import Lib.Types
 import qualified Data.Map as Map
-
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
 
 locationDB :: Map.Map String LatLong
 locationDB = Map.fromList [("Arkham",(42.6054,-70.7829))
@@ -45,6 +43,3 @@ haversineMaybe _ _ = Nothing
 printDistance :: Maybe Double -> IO ()
 printDistance Nothing = putStrLn "Error, invalid city entered"
 printDistance (Just distance) = putStrLn (show distance ++ " miles")
-
-
-
