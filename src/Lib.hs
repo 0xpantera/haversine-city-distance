@@ -1,6 +1,7 @@
 module Lib
     ( locationDB
     , haversine
+    , printDistance
     ) where
 
 import Lib.Types
