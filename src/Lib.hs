@@ -40,6 +40,17 @@ haversineMaybe (Just val1) (Just val2) = Just (haversine val1 val2)
 haversineMaybe _ _ = Nothing
 
 
+haversineIO :: IO LatLong -> IO LatLong -> IO Double
+haversineIO ioVal1 ioVal2 = do
+  val1 <- ioVal1
+  val2 <- ioVal2
+  let dist = haversine val1 val2
+  return dist
+
+
+haverIO :: IO LatLong -> IO LatLong -> IO Double
+haverIO ioVal1 ioVal2 = haversine <$> ioVal1 <*> ioVal2
+
 
 printDistance :: Maybe Double -> IO ()
 printDistance Nothing = putStrLn "Error, invalid city entered"
